@@ -1,0 +1,17 @@
+.list-item-container{
+    margin-top: 10px;
+
+    width: 80%;
+}
+.list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.list-item p{
+    margin: 0;
+}
+.buttons{
+    display: flex;
+    gap: 15px;
+}
