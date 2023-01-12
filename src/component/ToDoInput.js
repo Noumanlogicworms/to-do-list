@@ -6,28 +6,53 @@ const ToDoInput = (props) => {
       <input
         placeholder="Add Item"
         type="text"
-        class="input"
+        className="input"
         required=""
-        value={props.toDoValue}
+        value={props.inputValue}
         onChange={(e) => {
-          props.setToDoValue(e.target.value);
+          props.setInputValue(e.target.value);
         }}
       />
       <button
         onClick={() => {
-          props.pushValueInTodo();
+          props.handleAddBtn();
         }}
       >
-        <span class="span-mother">
-          <span>A</span>
-          <span>d</span>
-          <span>d</span>
-        </span>
-        <span class="span-mother2">
-          <span>A</span>
-          <span>d</span>
-          <span>d</span>
-        </span>
+        {props.update ? (
+          <>
+            <span className="span-mother">
+              <span>u</span>
+              <span>p</span>
+              <span>d</span>
+              <span>a</span>
+              <span>t</span>
+              <span>e</span>
+            </span>
+
+            <span className="span-mother2">
+              <span>u</span>
+              <span>p</span>
+              <span>d</span>
+              <span>a</span>
+              <span>t</span>
+              <span>e</span>
+            </span>
+          </>
+        ) : (
+          <>
+            <span className="span-mother">
+              <span>A</span>
+              <span>d</span>
+              <span>d</span>
+            </span>
+
+            <span className="span-mother2">
+              <span>A</span>
+              <span>d</span>
+              <span>d</span>
+            </span>
+          </>
+        )}
       </button>
     </div>
   );

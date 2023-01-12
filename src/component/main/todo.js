@@ -4,55 +4,73 @@ import "../main/todo.css";
 import ToDoInput from "../ToDoInput";
 
 const Todo = () => {
-  const [toDoValue, setToDoValue] = useState("");
-  const [allToDo, setallToDo] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const [toDoList, setToDoList] = useState([]);
+  const [update, setUpdate] = useState(false);
   const [error, setError] = useState(false);
+  const [itemId, setItemId] = useState();
 
-  const DeleteToDo = (id) => {
-    let temp = [...allToDo];
-    if (id == 0) {
-      temp.pop();
-      setallToDo([...temp]);
-      return;
-    }
-    temp.splice(1, id);
-    setallToDo([...temp]);
-  };
-
-  const pushValueInTodo = () => {
-    if (toDoValue == "") {
+  const handleAddBtn = () => {
+    if (inputValue == "") {
       setError(true);
       return;
     }
-    let temp = [...allToDo];
-    temp.push({ toDoValue });
-    setallToDo([...temp]);
-    setToDoValue("");
-  };
-
-  const editItem = (id) => {
-    setToDoValue(allToDo[id].toDoValue);
+    if (update == true) {
+      let temp = [...toDoList];
+      temp[itemId] = { inputValue };
+      setToDoList([...temp]);
+      setUpdate(false);
+      setInputValue("");
+    } else {
+      let temp = [...toDoList];
+      temp.push({ inputValue });
+      setToDoList([...temp]);
+      setInputValue("");
+    }
   };
 
   useEffect(() => {
-    if (toDoValue !== "") {
+    if (inputValue !== "") {
       setError(false);
     }
-  }, [toDoValue]);
+  }, [inputValue]);
+
+  const handleEditBtn = (id) => {
+    setItemId(id);
+    setUpdate(true);
+    setInputValue(toDoList[id].inputValue);
+  };
+
+  const handleDeleteBtn = (id) => {
+    let temp = [...toDoList];
+    if (id == 0) {
+      temp.pop();
+      setToDoList([...temp]);
+      return;
+    }
+    temp.splice(id, 1);
+    setToDoList([...temp]);
+  };
 
   return (
     <div className="container">
-      <h1>To-do App</h1>
+      <h1 className="heading">To-do App</h1>
       <ToDoInput
-        toDoValue={toDoValue}
-        setToDoValue={setToDoValue}
-        pushValueInTodo={pushValueInTodo}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        handleAddBtn={handleAddBtn}
+        update={update}
       />
-      {error && <span>Please add some value</span>}
+      {error && <span className="error">Please add some value</span>}
       <div className="divider">
         <hr />
       </div>
-      <ToDoList allToDo={allToDo} DeleteToDo={DeleteToDo} editItem={editItem} />
+
+      <ToDoList
+        toDoList={toDoList}
+        handleDeleteBtn={handleDeleteBtn}
+        handleEditBtn={handleEditBtn}
+      />
     </div>
   );
 };

@@ -70,6 +70,18 @@ button .span-mother span:nth-child(2) {
 button .span-mother span:nth-child(3) {
   transition: .4s;
 }
+button .span-mother span:nth-child(4) {
+  transition: .5s;
+  
+}
+button .span-mother span:nth-child(5) {
+  transition: .6s;
+ 
+}
+button .span-mother span:nth-child(6) {
+  transition: .7s;
+  
+}
 
 
 
@@ -97,6 +109,18 @@ button .span-mother2 span:nth-child(2) {
 
 button .span-mother2 span:nth-child(3) {
   transition: .4s;
+}
+button .span-mother2 span:nth-child(4) {
+  transition: .5s;
+
+}
+button .span-mother2 span:nth-child(5) {
+  transition: .6s;
+ 
+}
+button .span-mother2 span:nth-child(6) {
+  transition: .7s;
+
 }
 
 
