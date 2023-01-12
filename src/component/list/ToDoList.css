@@ -7,9 +7,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 0.1px solid #fff;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    
 }
 .list-item p{
     margin: 0;
+    overflow-wrap: anywhere;
+    padding-right: 10px;
 }
 .buttons{
     display: flex;
